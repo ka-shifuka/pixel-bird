@@ -21,6 +21,7 @@ function love.load()
 
   gooi.setGroupVisible("playUi", false)
   gooi.setGroupVisible("gameOver", false)
+  gooi.setGroupVisible("pauseUi", false)
 
   gameState = 0
 end
@@ -60,14 +61,33 @@ function love.update(dt)
     end
   end
 
+  if gameState == 3 then
+    gooi.setGroupVisible("pauseUi", true)
+    gooi.setGroupVisible("gameOver", false)
+    gooi.setGroupVisible("play", false)
+    gooi.setGroupVisible("playUi", false)
+    gooi.setGroupVisible("startMenu", false)
+  end
+
   if gameState == 2 then
+    gooi.setGroupVisible("pauseUi", false)
     gooi.setGroupVisible("gameOver", true)
     gooi.setGroupVisible("play", false)
     gooi.setGroupVisible("playUi", false)
+    gooi.setGroupVisible("startMenu", false)
+  end
+
+  if gameState == 1 then
+    gooi.setGroupVisible("pauseUi", false)
+    gooi.setGroupVisible("gameOver", false)
+    gooi.setGroupVisible("play", true)
+    gooi.setGroupVisible("playUi", true)
+    gooi.setGroupVisible("startMenu", false)
   end
   gooi.update(dt)
 
   scoreLabel:setText(player.score)
+  gameOverScoreText:setText(player.score)
 end
 
 function love.draw()
@@ -85,9 +105,14 @@ function love.draw()
   gooi.draw("playUi")
   gooi.draw("startMenu")
   gooi.draw("gameOver")
+  gooi.draw("pauseUi")
   gooi.draw()
 end
 
 function love.touchpressed(id, x, y)
   gooi.pressed(id, x, y)
+end
+
+function love.touchreleased(id, x, y)
+  gooi.released(id, x, y)
 end
