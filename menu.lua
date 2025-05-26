@@ -13,7 +13,6 @@ gooi.newButton({
 }):onPress(function()
   if gameState == 1 then
     player:jump()
-    soundEffect.jump:setVolume(60)
     soundEffect.jump:clone():play()
   end
 
@@ -37,7 +36,6 @@ gooi.newButton({
   text = "󰏤",
   group = "playUi"
 }):onPress(function()
-  soundEffect.jump:setVolume(0)
   gameState = 3
 end)
 
@@ -126,31 +124,25 @@ gooi.newButton({
   text = "",
   group = "pauseUi"
 })
-gooi.newLabel({
-  x = 40,
-  y = 300,
-  text = "Create with Love2D",
-  group = "pauseUi"
-})
-gooi.newLabel({
-  x = 40,
-  y = 320,
-  text = "Develope by arya (ka-shifuka)",
-  group = "pauseUi"
-})
 
-gooi.newLabel({
-  x = 40,
-  y = 470,
-  text = "email: aryadewanggapuja@gmail.com",
+gooi.setStyle({ bgColor = { 0, 0, 0, 0.0 }, })
+gooi.newButton({
+  x = gr.getWidth() / 2 - 5,
+  y = 400,
+  w = 10,
+  text = "Create with Love2D",
   group = "pauseUi"
 })
 
 -- hyperlink
+gooi.setStyle({
+  bgColor = { 0, 0, 0, 0.4 },
+  font = gr.newFont("asset/font.ttf", 24)
+})
 gooi.newPanel({
-  x = gr.getWidth() / 2 - 175,
+  x = gr.getWidth() / 2 - 100,
   y = 500,
-  w = 350,
+  w = 200,
   h = 50,
   layout = "grid 1x3",
   group = "pauseUi"
@@ -158,7 +150,7 @@ gooi.newPanel({
   gooi.newButton({
     x = 50,
     y = 340,
-    text = "github"
+    text = ""
   }):onPress(function()
     love.system.openURL("https://github.com/ka-shifuka")
   end),
@@ -166,7 +158,7 @@ gooi.newPanel({
   gooi.newButton({
     x = 150,
     y = 340,
-    text = "facebook"
+    text = ""
   }):onPress(function()
     love.system.openURL("https://www.facebook.com/aryadewanggapuja")
   end),
@@ -174,8 +166,8 @@ gooi.newPanel({
   gooi.newButton({
     x = 150,
     y = 340,
-    text = "instagram"
-  }):onPress(function ()
+    text = ""
+  }):onPress(function()
     love.system.openURL("https://www.instagram.com/aryadewanggapuja?igsh=YzljYTk1ODg3Zg==")
   end)
 )
