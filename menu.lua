@@ -133,7 +133,6 @@ gooi.newButton({
   text = "Create with Love2D",
   group = "pauseUi"
 })
-
 -- hyperlink
 gooi.setStyle({
   bgColor = { 0, 0, 0, 0.4 },
@@ -164,7 +163,6 @@ gooi.newPanel({
   end),
 
   gooi.newButton({
-    x = 150,
     y = 340,
     text = ""
   }):onPress(function()

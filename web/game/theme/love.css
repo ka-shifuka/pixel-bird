@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#canvas {
+  display: block;
+  visibility: hidden;
+  z-index: 100;
+}
+
+#loadingCanvas {
+  width: 100vw;
+  aspect-ratio: 1/2;
+  max-width: 400px;
+  max-height: 800px;
+}
+
+button {
+  position: absolute;
+  background-color: #00000033;
+
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+}

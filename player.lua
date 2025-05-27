@@ -22,13 +22,13 @@ player.anim.duration = 50
 
 -- method
 function player:update(dt)
-  if (self.y >= ground.y) then
+  if self.y >= ground.y then
     self.y = ground.y
-    self.velocity = -(self.velocity / 1.5)
+    self.velocity = -(self.velocity / 2)
     self.angle = 0
     self.angleV = 0
 
-    soundEffect.bounce:clone():play()
+    soundEffect.bounce:play()
   end
   self.velocity = self.velocity + self.gravity * dt
   self.y = self.y + self.velocity
@@ -39,6 +39,10 @@ function player:update(dt)
     self.angle = math.pi / 8
   end
 
+  if self.y < -700 then
+    player.y = love.graphics.getHeight() / 2
+    player.velocity = 0
+  end
 
   self.anim.duration = self.anim.duration - 1
   self.anim.animation:update(dt)
