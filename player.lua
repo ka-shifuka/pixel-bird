@@ -49,8 +49,21 @@ function player:update(dt)
 end
 
 function player:detectCollision(pipe)
-  local ll = pipe:getAboveCollision()
-  local pp = pipe:getBellowCollision()
+  local ll = pipe:getHeadCollAbove()
+  local pp = pipe:getHeadCollBelow()
+
+  if self.x + 16 > ll.x and self.x + 16 < ll.x + ll.w then
+    if self.y - 16 > ll.y and self.y - 16 < ll.y + ll.h then
+      gameState = 2
+    end
+
+    if self.y + 16 > pp.y and self.y + 16 < pp.y + pp.h then
+      gameState = 2
+    end
+  end
+
+  ll = pipe:getTailCollAbove()
+  pp = pipe:getTailCollBelow()
 
   if self.x + 8 > ll.x and self.x + 8 < ll.x + ll.w then
     if self.y - 8 > ll.y and self.y - 8 < ll.y + ll.h then

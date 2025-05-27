@@ -90,5 +90,10 @@ function ground:draw()
   love.graphics.draw(self.image, self.image:getWidth(), 0)
   love.graphics.draw(self.image, self.image:getWidth() * 2, 0)
 
+  love.graphics.scale(-1)
+  love.graphics.draw(self.image, -self.image:getWidth(), -self.image:getHeight() * 2)
+  love.graphics.draw(self.image, -self.image:getWidth() * 2, -self.image:getHeight() * 2)
+  love.graphics.draw(self.image, -self.image:getWidth() * 3, -self.image:getHeight() * 2)
+
   love.graphics.pop()
 end

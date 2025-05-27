@@ -7,7 +7,7 @@ gooi.newButton({
   text = "",
   x = 0,
   y = 0,
-  w = gr.getWidth(),
+  w = gr.getWidth() * 2,
   h = gr.getHeight(),
   group = "play"
 }):onPress(function()
@@ -76,7 +76,7 @@ gooi.newButton({
   x = 0,
   y = 0,
   w = gr.getWidth(),
-  h = gr.getHeight(),
+  h = gr.getHeight() * 2,
   text = "",
   group = "gameOver"
 }):onRelease(function()
@@ -120,7 +120,7 @@ gooi.newButton({
   x = 0,
   y = 0,
   w = gr.getWidth(),
-  h = gr.getHeight(),
+  h = gr.getHeight() * 2,
   text = "",
   group = "pauseUi"
 })

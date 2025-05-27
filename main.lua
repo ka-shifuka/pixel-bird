@@ -12,11 +12,8 @@ function love.load()
 
 
   soundEffect = {}
-  soundEffect.jump = love.audio.newSource("asset/sound/jump.mp3", "stream")
-  soundEffect.bounce = love.audio.newSource("asset/sound/bounce.mp3", "stream")
-
-  soundEffect.jump:setPitch(0.6)
-  soundEffect.jump:setVolume(0.6)
+  soundEffect.jump = love.audio.newSource("asset/sound/jump.mp3", "static")
+  soundEffect.bounce = love.audio.newSource("asset/sound/bounce.mp3", "static")
 
   pipes = {}
   timer = 0
@@ -94,7 +91,7 @@ function love.update(dt)
 end
 
 function love.draw()
-  love.graphics.setBackgroundColor(1, 1, 1, 1)
+  love.graphics.setBackgroundColor(0, 0, 0, 1)
 
   backgroundSystem:draw()
   ground:draw()
@@ -110,6 +107,14 @@ function love.draw()
   gooi.draw("gameOver")
   gooi.draw("pauseUi")
   gooi.draw()
+
+  local safeX, safeY, safeW, safeH = love.window.getSafeArea()
+  love.graphics.print("sx: " .. safeX, 100, 100)
+  love.graphics.print("sy: " .. safeY, 100, 120)
+  love.graphics.print("sw: " .. safeW, 100, 140)
+  love.graphics.print("sh: " .. safeH, 100, 160)
+  love.graphics.print("w: " .. love.graphics.getWidth(), 100, 180)
+  love.graphics.print("h: " .. love.graphics.getHeight(), 100, 200)
 end
 
 function love.touchpressed(id, x, y)
@@ -130,7 +135,10 @@ end
 
 function love.focus(focus)
   if not focus then
-    player.score = 100
-    love.event.quit()
+    bgmusic:stop()
+    gameState = 3
+  end
+  if focus then
+    bgmusic:play()
   end
 end

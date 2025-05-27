@@ -55,7 +55,16 @@ function createPipe(x, y)
     love.graphics.pop()
   end
 
-  function pipe:getAboveCollision()
+  function pipe:getHeadCollAbove()
+    local x = self.x
+    local y = self.y - (30 * 0.6) * 3
+    local w = 32 * 3
+    local h = (30 * 0.6) * 3
+
+    return { x = x, y = y, w = w, h = h }
+  end
+
+  function pipe:getTailCollAbove()
     local x = self.x
     local y = self.y - (30 * 7) * 3
     local w = 32 * 3
@@ -64,7 +73,16 @@ function createPipe(x, y)
     return { x = x, y = y, w = w, h = h }
   end
 
-  function pipe:getBellowCollision()
+  function pipe:getHeadCollBelow()
+    local x = self.x
+    local y = self.y + self.gap
+    local w = 32 * 3
+    local h = (30 * 0.6) * 3
+
+    return { x = x, y = y, w = w, h = h }
+  end
+
+  function pipe:getTailCollBelow()
     local x = self.x
     local y = self.y + self.gap
     local w = 32 * 3
