@@ -107,14 +107,6 @@ function love.draw()
   gooi.draw("gameOver")
   gooi.draw("pauseUi")
   gooi.draw()
-
-  local safeX, safeY, safeW, safeH = love.window.getSafeArea()
-  love.graphics.print("sx: " .. safeX, 100, 100)
-  love.graphics.print("sy: " .. safeY, 100, 120)
-  love.graphics.print("sw: " .. safeW, 100, 140)
-  love.graphics.print("sh: " .. safeH, 100, 160)
-  love.graphics.print("w: " .. love.graphics.getWidth(), 100, 180)
-  love.graphics.print("h: " .. love.graphics.getHeight(), 100, 200)
 end
 
 function love.touchpressed(id, x, y)
@@ -131,14 +123,4 @@ end
 
 function love.mousereleased(x, y, btn)
   gooi.released()
-end
-
-function love.focus(focus)
-  if not focus then
-    bgmusic:stop()
-    gameState = 3
-  end
-  if focus then
-    bgmusic:play()
-  end
 end
